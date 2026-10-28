@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharma Genie - Next-Generation Pharmacogenomic Dosing Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'grey-green': {
+                            50: '#f2f5f3',
+                            100: '#e0e7e3',
+                            200: '#c2d1c9',
+                            300: '#9cb4a9',
+                            400: '#759485',
+                            500: '#567968',
+                            600: '#426052',
+                            700: '#354c41',
+                            800: '#2c3e36',
+                            900: '#25342d',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800 font-sans antialiased selection:bg-grey-green-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-grey-green-100">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="logo.png" alt="Pharma Genie Logo" class="h-10 w-auto">
+                <span class="text-xl font-extrabold text-grey-green-900 tracking-tight">Pharma Genie</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#problem" class="text-sm font-semibold text-grey-green-700 hover:text-grey-green-900 uppercase tracking-wider transition">The Problem</a>
+                <a href="#solution" class="text-sm font-semibold text-grey-green-700 hover:text-grey-green-900 uppercase tracking-wider transition">Our Solution</a>
+                <a href="#market" class="text-sm font-semibold text-grey-green-700 hover:text-grey-green-900 uppercase tracking-wider transition">Market</a>
+            </div>
+            <a href="#demo" class="bg-grey-green-700 text-white px-6 py-2 rounded-full font-medium hover:bg-grey-green-800 transition shadow-md hover:shadow-lg">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Abstract Background Shape -->
+        <div class="absolute top-0 right-0 -z-10 w-full h-full overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-grey-green-100 opacity-50 blur-3xl"></div>
+            <div class="absolute top-40 -left-20 w-72 h-72 rounded-full bg-grey-green-50 opacity-70 blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20 animate-fade-in">
+            <!-- Text Content -->
+            <div class="lg:w-1/2 flex flex-col items-start text-left z-10">
+                <div class="inline-flex items-center space-x-2 bg-grey-green-50 text-grey-green-800 font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-grey-green-200 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-grey-green-500 animate-pulse"></span>
+                    <span>Next-Generation Pharmacogenomics</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-grey-green-900 leading-tight mb-6">
+                    Precision Prescriptions for the Indian Population.
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl font-light">
+                    <strong class="font-semibold text-grey-green-800">Replacing legacy, one-size-fits-all medicine</strong> with a custom pharmacogenomic dosing engine that turns complex genetic variations into life-saving, precision prescriptions.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 w-full">
+                    <a href="#demo" class="bg-grey-green-700 text-white text-center px-8 py-4 rounded-lg font-bold text-lg hover:bg-grey-green-800 transition-colors shadow-lg hover:shadow-xl w-full sm:w-auto">
+                        See Clinical View
+                    </a>
+                    <a href="#solution" class="bg-white text-grey-green-800 border-2 border-grey-green-200 text-center px-8 py-4 rounded-lg font-bold text-lg hover:border-grey-green-400 hover:bg-grey-green-50 transition-colors w-full sm:w-auto">
+                        Explore the Architecture
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Image / Logo -->
+            <div class="lg:w-1/2 flex justify-center items-center p-8 z-10">
+                <div class="relative w-full max-w-lg aspect-square flex justify-center items-center">
+                    <!-- Glow effect behind logo -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-grey-green-200 to-white rounded-full blur-2xl opacity-60"></div>
+                    <img src="logo.png" alt="Pharma Genie Concept Engine" class="relative z-10 w-full max-w-md animate-float drop-shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem Section -->
+    <section id="problem" class="py-20 bg-grey-green-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">The Context Gap in Indian Healthcare</h2>
+                <p class="text-grey-green-200 text-lg">Current protocols are built on Western cohorts, leaving a critical gap in precision care for diverse populations.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-grey-green-700">
+                <div class="p-6">
+                    <div class="text-5xl font-extrabold text-grey-green-300 mb-4">4,600+</div>
+                    <h3 class="text-xl font-bold mb-2">Endogamous Groups</h3>
+                    <p class="text-grey-green-400 text-sm">Indian sub-populations ignored by traditional Western/Caucasian cohort-based medical protocols.</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-5xl font-extrabold text-grey-green-300 mb-4">49%</div>
+                    <h3 class="text-xl font-bold mb-2">Polypharmacy Rate</h3>
+                    <p class="text-grey-green-400 text-sm">High hospital polypharmacy prevalence in India, exponentially increasing drug-gene interaction risks.</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-5xl font-extrabold text-grey-green-300 mb-4">High-Risk</div>
+                    <h3 class="text-xl font-bold mb-2">Allele Disparities</h3>
+                    <p class="text-grey-green-400 text-sm">Significant frequency differences in high-risk alleles requiring population-calibrated intelligence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution Section -->
+    <section id="solution" class="py-24 bg-grey-green-50">
+        <div class="container mx-auto px-6 text-center max-w-5xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-grey-green-900 mb-6">One Clinician-Facing Layer</h2>
+            <p class="text-lg text-gray-600 mb-16 max-w-2xl mx-auto">Translating complex PGx results into usable context directly at the point of care.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Interpret -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-grey-green-100 hover:shadow-md transition-shadow text-left">
+                    <div class="w-14 h-14 bg-grey-green-100 text-grey-green-700 rounded-xl flex items-center justify-center text-xl font-extrabold mb-6">01</div>
+                    <h3 class="text-xl font-bold text-grey-green-900 mb-3">Interpret</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Point-of-care Clinical Decision Support. We bridge the gap between raw variant data and immediate phenotype context alongside active medication lists.</p>
+                </div>
+                <!-- Reconcile -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-grey-green-100 hover:shadow-md transition-shadow text-left">
+                    <div class="w-14 h-14 bg-grey-green-100 text-grey-green-700 rounded-xl flex items-center justify-center text-xl font-extrabold mb-6">02</div>
+                    <h3 class="text-xl font-bold text-grey-green-900 mb-3">Reconcile</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Population-Calibrated insights factoring in Real-World Phenoconversion Intelligence to catch hidden Drug-Drug-Gene Interactions (DDGI).</p>
+                </div>
+                <!-- Context -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-grey-green-100 hover:shadow-md transition-shadow text-left">
+                    <div class="w-14 h-14 bg-grey-green-100 text-grey-green-700 rounded-xl flex items-center justify-center text-xl font-extrabold mb-6">03</div>
+                    <h3 class="text-xl font-bold text-grey-green-900 mb-3">Context</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Indigenous Genomic Reference Integration. Architected for seamless interoperability with the ABDM / FHIR National Health Stack.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business & Market Section -->
+    <section id="market" class="py-20 bg-white border-t border-grey-green-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold text-grey-green-900 mb-6">A $2.5B Market Opportunity by 2032</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        With an Indian Addressable Genomics Market growing at a 20.1% CAGR, Pharma Genie positions itself in high-risk prescribing workflows.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-6 h-6 text-grey-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <div>
+                                <strong class="text-grey-green-900 block">Cardiology Workflow</strong>
+                                <span class="text-sm text-gray-600">Clopidogrel (CYP2C19) & Warfarin (VKORC1 & CYP2C9)</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-6 h-6 text-grey-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <div>
+                                <strong class="text-grey-green-900 block">Oncology & GI Workflow</strong>
+                                <span class="text-sm text-gray-600">Thiopurines (NUDT15)</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-6 h-6 text-grey-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <div>
+                                <strong class="text-grey-green-900 block">Neurology Workflow</strong>
+                                <span class="text-sm text-gray-600">Carbamazepine (HLA-B*15:02)</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2 grid grid-cols-2 gap-4">
+                    <div class="bg-grey-green-50 p-6 rounded-xl border border-grey-green-200">
+                        <div class="text-grey-green-800 font-bold mb-1">Hospital SaaS</div>
+                        <p class="text-xs text-gray-500">Subscription for POC decision support in specialty care.</p>
+                    </div>
+                    <div class="bg-grey-green-50 p-6 rounded-xl border border-grey-green-200">
+                        <div class="text-grey-green-800 font-bold mb-1">Lab API</div>
+                        <p class="text-xs text-gray-500">Per-report interpretation in diagnostic workflows.</p>
+                    </div>
+                    <div class="bg-grey-green-50 p-6 rounded-xl border border-grey-green-200">
+                        <div class="text-grey-green-800 font-bold mb-1">PGx Bundling</div>
+                        <p class="text-xs text-gray-500">Targeted single-gene testing + clinician result.</p>
+                    </div>
+                    <div class="bg-grey-green-50 p-6 rounded-xl border border-grey-green-200">
+                        <div class="text-grey-green-800 font-bold mb-1">Payer Partners</div>
+                        <p class="text-xs text-gray-500">Screening support tied to avoidable adverse events.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-grey-green-900 text-grey-green-300 py-12 border-t border-grey-green-800">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                <img src="logo.png" alt="Pharma Genie" class="h-8 w-auto brightness-0 invert opacity-80">
+                <span class="text-xl font-bold text-white tracking-tight">Pharma Genie</span>
+            </div>
+            <div class="text-sm text-center md:text-right">
+                <p>&copy; 2026 Pharma Genie. Designed for precision.</p>
+                <p class="text-grey-green-500 mt-1">Founders: Prakash V, Vasanth Saran S, Saravanan A</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
