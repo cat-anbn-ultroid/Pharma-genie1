@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PHARMA GENIE | Precision Pharmacogenomic Dosing for India</title>
+  <meta name="description" content="Replacing legacy, one-size-fits-all medicine with a custom pharmacogenomic dosing engine that turns complex genetic variations into life-saving, precision prescriptions." />
+  <link rel="icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1d2825;
+      --slate: #34433e;
+      --forest: #2c4f40;
+      --sage: #7fb394;
+      --sage-soft: #a9cdb9;
+      --mist: #e3ece7;
+      --fog: #f3f6f4;
+      --stone: #6f7b75;
+      --line: #d5dfd9;
+      --white: #ffffff;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(29, 40, 37, 0.08);
+      --shadow-lg: 0 24px 60px rgba(29, 40, 37, 0.14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .display { font-family: "Manrope", "Inter", sans-serif; letter-spacing: -0.02em; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1180px, 92%); margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--forest);
+    }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--sage); border-radius: 2px; }
+    .section { padding: 96px 0; }
+    .section-head { max-width: 680px; margin-bottom: 56px; }
+    .section-head h2 { font-size: clamp(1.9rem, 3.2vw, 2.7rem); margin: 14px 0 16px; color: var(--ink); }
+    .section-head p { color: var(--stone); font-size: 1.05rem; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 26px; border-radius: 999px; font-weight: 600; font-size: 0.98rem;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+      border: 1.5px solid transparent; cursor: pointer;
+    }
+    .btn-primary { background: var(--forest); color: var(--white); box-shadow: 0 8px 22px rgba(44, 79, 64, 0.28); }
+    .btn-primary:hover { background: #244336; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(44, 79, 64, 0.32); }
+    .btn-ghost { background: transparent; color: var(--forest); border-color: var(--forest); }
+    .btn-ghost:hover { background: var(--forest); color: var(--white); transform: translateY(-2px); }
+
+    /* Nav */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: saturate(160%) blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-family: "Manrope", sans-serif; font-weight: 800; font-size: 1.15rem; letter-spacing: 0.04em; color: var(--forest); }
+    .brand img { width: 40px; height: 40px; object-fit: contain; mix-blend-mode: multiply; }
+    .nav-links { display: flex; align-items: center; gap: 30px; font-size: 0.95rem; font-weight: 500; color: var(--slate); }
+    .nav-links a:not(.btn) { position: relative; }
+    .nav-links a:not(.btn)::after {
+      content: ""; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px;
+      background: var(--sage); transition: width .25s ease;
+    }
+    .nav-links a:not(.btn):hover::after { width: 100%; }
+    .nav-links .btn { padding: 10px 20px; font-size: 0.9rem; }
+
+    /* Hero */
+    .hero {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(900px 500px at 85% 10%, rgba(127, 179, 148, 0.22), transparent 60%),
+        radial-gradient(700px 500px at 0% 100%, rgba(44, 79, 64, 0.10), transparent 60%),
+        linear-gradient(180deg, var(--fog) 0%, var(--white) 100%);
+      padding: 96px 0 110px;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+    .hero h1 { font-size: clamp(2.3rem, 4.6vw, 3.9rem); color: var(--ink); margin: 18px 0 22px; }
+    .hero h1 span { color: var(--forest); }
+    .hero .lead { font-size: 1.12rem; color: var(--slate); max-width: 560px; margin-bottom: 36px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-meta { display: flex; gap: 28px; margin-top: 44px; flex-wrap: wrap; font-size: 0.9rem; color: var(--stone); }
+    .hero-meta strong { display: block; font-family: "Manrope", sans-serif; font-size: 1.35rem; color: var(--forest); }
+
+    /* Animated logo stage */
+    .logo-stage {
+      position: relative; aspect-ratio: 1 / 1; max-width: 480px; width: 100%; margin-left: auto;
+      display: grid; place-items: center;
+    }
+    .logo-stage::before, .logo-stage::after {
+      content: ""; position: absolute; border-radius: 50%; pointer-events: none;
+    }
+    .logo-stage::before {
+      inset: 6%; border: 1.5px dashed rgba(44, 79, 64, 0.22);
+      animation: spin 46s linear infinite;
+    }
+    .logo-stage::after {
+      inset: 18%; background: radial-gradient(circle, rgba(127, 179, 148, 0.35), transparent 70%);
+      animation: breathe 5s ease-in-out infinite;
+    }
+    .logo-card {
+      position: relative; z-index: 1;
+      width: 82%; padding: 36px; border-radius: 28px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
+      animation: float 6s ease-in-out infinite;
+    }
+    .logo-card img {
+      width: 100%; height: auto; mix-blend-mode: multiply;
+      animation: logoReveal 1.4s cubic-bezier(.22,.61,.36,1) both, logoGlow 4.5s ease-in-out 1.4s infinite;
+    }
+    .logo-shine {
+      position: absolute; inset: 36px; border-radius: 20px; overflow: hidden; pointer-events: none; z-index: 2;
+    }
+    .logo-shine::after {
+      content: ""; position: absolute; top: 0; left: -75%; width: 50%; height: 100%;
+      background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.7) 50%, transparent 100%);
+      transform: skewX(-18deg);
+      animation: shine 6s ease-in-out 1.8s infinite;
+    }
+    .orbit-dot {
+      position: absolute; width: 12px; height: 12px; border-radius: 50%;
+      background: var(--sage); box-shadow: 0 0 0 6px rgba(127, 179, 148, 0.2);
+      top: 50%; left: 50%; margin: -6px; z-index: 0;
+      animation: orbit 14s linear infinite;
+    }
+    .orbit-dot.two { background: var(--forest); animation-duration: 20s; animation-direction: reverse; width: 9px; height: 9px; margin: -4.5px; box-shadow: 0 0 0 5px rgba(44,79,64,0.15); }
+
+    @keyframes logoReveal {
+      0%   { opacity: 0; transform: scale(0.86) translateY(14px); filter: blur(6px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+    }
+    @keyframes logoGlow {
+      0%, 100% { filter: drop-shadow(0 0 0 rgba(127,179,148,0)); }
+      50%      { filter: drop-shadow(0 0 18px rgba(127,179,148,0.45)); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes breathe {
+      0%, 100% { transform: scale(0.96); opacity: 0.7; }
+      50%      { transform: scale(1.04); opacity: 1; }
+    }
+    @keyframes shine {
+      0%, 55%  { left: -75%; }
+      100%     { left: 130%; }
+    }
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(min(42vw, 230px)) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(min(42vw, 230px)) rotate(-360deg); }
+    }
+
+    /* Trust band */
+    .band {
+      background: var(--forest); color: var(--white);
+      padding: 46px 0;
+    }
+    .band-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+    .band-grid .num { font-family: "Manrope", sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--sage-soft); }
+    .band-grid .label { font-size: 0.92rem; color: #d7e6dd; margin-top: 4px; }
+
+    /* Problem */
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .problem-copy p { color: var(--slate); margin-bottom: 18px; font-size: 1.02rem; }
+    .stat-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .stat-card {
+      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 26px; box-shadow: var(--shadow); transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .stat-card .big { font-family: "Manrope", sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--forest); }
+    .stat-card .txt { font-size: 0.92rem; color: var(--stone); margin-top: 6px; }
+    .stat-card.wide { grid-column: span 2; background: var(--fog); }
+
+    /* Gene frequency */
+    .genes { background: var(--fog); }
+    .gene-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .gene-table th, .gene-table td { padding: 18px 24px; text-align: left; font-size: 0.97rem; }
+    .gene-table th { background: var(--mist); font-weight: 700; color: var(--forest); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .gene-table tr + tr td { border-top: 1px solid var(--line); }
+    .gene-table td.gene { font-weight: 700; font-family: "Manrope", sans-serif; color: var(--ink); }
+    .bar { height: 8px; background: var(--mist); border-radius: 999px; overflow: hidden; min-width: 160px; }
+    .bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--sage), var(--forest)); border-radius: 999px; transition: width 1.4s cubic-bezier(.22,.61,.36,1); }
+    .bar-label { font-weight: 700; color: var(--forest); font-size: 0.92rem; margin-bottom: 6px; display: block; }
+
+    /* How it works */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; position: relative; }
+    .step {
+      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 30px 26px; position: relative; box-shadow: var(--shadow);
+    }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+      background: var(--mist); color: var(--forest); font-family: "Manrope", sans-serif; font-weight: 800; margin-bottom: 18px;
+    }
+    .step h3 { font-size: 1.12rem; margin-bottom: 10px; color: var(--ink); }
+    .step p { font-size: 0.94rem; color: var(--stone); }
+
+    /* Features */
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .feature {
+      padding: 32px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--white);
+      transition: border-color .25s ease, transform .25s ease;
+    }
+    .feature:hover { border-color: var(--sage); transform: translateY(-3px); }
+    .icon {
+      width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--mist), #cfe3d7); color: var(--forest); margin-bottom: 20px;
+    }
+    .icon svg { width: 26px; height: 26px; }
+    .feature h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .feature p { color: var(--stone); font-size: 0.97rem; }
+
+    /* Specialties */
+    .specialties { background: var(--ink); color: var(--white); }
+    .specialties .section-head h2 { color: var(--white); }
+    .specialties .section-head p { color: #aebfb6; }
+    .specialties .eyebrow { color: var(--sage-soft); }
+    .spec-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .spec {
+      border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 26px 20px;
+      background: rgba(255,255,255,0.03); transition: background .25s ease, border-color .25s ease;
+    }
+    .spec:hover { background: rgba(127,179,148,0.12); border-color: rgba(127,179,148,0.5); }
+    .spec h3 { font-size: 1.05rem; margin-bottom: 8px; color: var(--white); }
+    .spec p { font-size: 0.88rem; color: #aebfb6; }
+
+    /* Market */
+    .market-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .market {
+      border-radius: var(--radius); padding: 34px 28px; background: var(--white); border: 1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .market .cap { font-size: 0.82rem; font-weight: 700; color: var(--stone); letter-spacing: 0.08em; text-transform: uppercase; }
+    .market .value { font-family: "Manrope", sans-serif; font-size: 2.1rem; font-weight: 800; color: var(--forest); margin: 12px 0 6px; }
+    .market .meta { font-size: 0.92rem; color: var(--slate); }
+    .market.featured { background: linear-gradient(160deg, var(--forest), #3c6654); border-color: transparent; }
+    .market.featured .cap, .market.featured .meta { color: #cfe2d7; }
+    .market.featured .value { color: var(--white); }
+
+    /* Audience */
+    .audience { background: var(--fog); }
+    .aud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .aud {
+      background: var(--white); border-radius: var(--radius); padding: 30px; border: 1px solid var(--line);
+    }
+    .aud h3 { font-size: 1.12rem; margin-bottom: 8px; }
+    .aud p { font-size: 0.94rem; color: var(--stone); }
+    .aud ul { list-style: none; margin-top: 14px; }
+    .aud li { font-size: 0.92rem; color: var(--slate); padding: 6px 0 6px 22px; position: relative; }
+    .aud li::before { content: ""; position: absolute; left: 0; top: 14px; width: 9px; height: 9px; border-radius: 3px; background: var(--sage); }
+
+    /* CTA */
+    .cta {
+      background:
+        radial-gradient(700px 400px at 100% 0%, rgba(127,179,148,0.35), transparent 60%),
+        linear-gradient(135deg, var(--forest), #1f3a2f);
+      color: var(--white); border-radius: 24px; padding: 72px 56px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center;
+      box-shadow: var(--shadow-lg);
+    }
+    .cta h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 14px; }
+    .cta p { color: #d3e4da; font-size: 1.03rem; }
+    .cta-actions { display: flex; flex-direction: column; gap: 14px; }
+    .cta .btn-primary { background: var(--white); color: var(--forest); box-shadow: none; }
+    .cta .btn-primary:hover { background: var(--mist); }
+    .cta .btn-ghost { color: var(--white); border-color: rgba(255,255,255,0.5); }
+    .cta .btn-ghost:hover { background: var(--white); color: var(--forest); }
+
+    /* Footer */
+    footer { padding: 56px 0 40px; background: var(--white); border-top: 1px solid var(--line); }
+    .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+    .foot-grid h4 { font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-bottom: 14px; }
+    .foot-grid a, .foot-grid p { display: block; font-size: 0.94rem; color: var(--slate); margin-bottom: 8px; }
+    .foot-grid a:hover { color: var(--forest); }
+    .foot-brand p { color: var(--stone); max-width: 340px; margin-top: 14px; font-size: 0.94rem; }
+    .disclaimer {
+      margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line);
+      font-size: 0.82rem; color: var(--stone); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-grid, .problem-grid { grid-template-columns: 1fr; }
+      .logo-stage { margin: 0 auto; max-width: 380px; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .features, .market-grid, .aud-grid { grid-template-columns: repeat(2, 1fr); }
+      .spec-grid { grid-template-columns: repeat(3, 1fr); }
+      .cta { grid-template-columns: 1fr; padding: 56px 36px; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 720px) {
+      .nav-links a:not(.btn) { display: none; }
+      .section { padding: 72px 0; }
+      .band-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps, .features, .market-grid, .aud-grid, .spec-grid, .stat-cards { grid-template-columns: 1fr; }
+      .stat-card.wide { grid-column: span 1; }
+      .gene-table th:nth-child(3), .gene-table td:nth-child(3) { display: none; }
+      .hero { padding: 64px 0 80px; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <img src="logo.png" alt="PHARMA GENIE logo" />
+        PHARMA GENIE
+      </a>
+      <nav class="nav-links">
+        <a href="#problem">The Problem</a>
+        <a href="#genes">Genomics</a>
+        <a href="#how">How It Works</a>
+        <a href="#platform">Platform</a>
+        <a href="#market">Market</a>
+        <a class="btn btn-primary" href="https://pharma-genie.lovable.app" target="_blank" rel="noopener">Launch Platform</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Pharmacogenomic Clinical Decision Support</span>
+          <h1>Replacing legacy, <span>one-size-fits-all</span> medicine with precision dosing.</h1>
+          <p class="lead">A custom pharmacogenomic dosing engine that turns complex genetic variations into life-saving, precision prescriptions, calibrated for the Indian population.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://pharma-genie.lovable.app" target="_blank" rel="noopener">Request Clinical Access &rarr;</a>
+            <a class="btn btn-ghost" href="#how">See How It Works</a>
+          </div>
+          <div class="hero-meta">
+            <div><strong>10,074</strong>GenomeIndia whole genomes</div>
+            <div><strong>1,008</strong>CSIR IndiGen genomes</div>
+            <div><strong>4,600+</strong>Indian sub-populations</div>
+          </div>
+        </div>
+
+        <div class="logo-stage" aria-hidden="true">
+          <span class="orbit-dot"></span>
+          <span class="orbit-dot two"></span>
+          <div class="logo-card">
+            <img src="logo.png" alt="" />
+            <span class="logo-shine"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust band -->
+    <section class="band">
+      <div class="container band-grid">
+        <div><div class="num">34.71%</div><div class="label">Inpatient adverse drug events classified as severe</div></div>
+        <div><div class="num">7.92%</div><div class="label">Classified as life-threatening</div></div>
+        <div><div class="num">3.77%</div><div class="label">Directly resulting in fatal outcomes</div></div>
+        <div><div class="num">13.85–43%</div><div class="label">Hospital polypharmacy rates</div></div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="section" id="problem">
+      <div class="container problem-grid">
+        <div class="problem-copy reveal">
+          <span class="eyebrow">The Problem</span>
+          <h2 style="font-size: clamp(1.9rem, 3.2vw, 2.7rem); margin: 14px 0 22px;">Standardized dosing ignores how Indian genomes differ.</h2>
+          <p>Routine prescribing in India still relies on empirical, one-size-fits-all protocols derived from Caucasian clinical trial cohorts. These protocols overlook the distinct allele frequencies of high-risk pharmacogenes across diverse Indian sub-populations.</p>
+          <p>The result is a fundamental genomic mismatch: treatment failures and preventable toxicities that surface only after the damage is done. Without point-of-care genomic translation and drug-drug-gene interaction screening, tertiary centers are left to manage that risk by trial and error.</p>
+        </div>
+        <div class="stat-cards">
+          <div class="stat-card reveal">
+            <div class="big">36.0%</div>
+            <div class="txt">CYP2C19*2 frequency, linked to clopidogrel resistance</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="big">71–75%</div>
+            <div class="txt">VKORC1 warfarin sensitivity variant frequency</div>
+          </div>
+          <div class="stat-card wide reveal">
+            <div class="big">8.0%</div>
+            <div class="txt">NUDT15 variant frequency associated with thiopurine toxicity</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Genomics -->
+    <section class="section genes" id="genes">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Population-Calibrated Genomics</span>
+          <h2>Local allele frequencies, not borrowed ones.</h2>
+          <p>Our interpretation engine embeds allele frequencies from GenomeIndia and CSIR IndiGen, so every dosing recommendation reflects the populations it is applied to.</p>
+        </div>
+        <div class="reveal">
+          <table class="gene-table">
+            <thead>
+              <tr><th>Gene / Variant</th><th>Clinical Relevance</th><th>Indian Allele Frequency</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="gene">CYP2C19*2</td>
+                <td>Clopidogrel response</td>
+                <td><span class="bar-label">36.0%</span><div class="bar"><span data-w="36"></span></div></td>
+              </tr>
+              <tr>
+                <td class="gene">VKORC1</td>
+                <td>Warfarin sensitivity</td>
+                <td><span class="bar-label">71.0–75.0%</span><div class="bar"><span data-w="73"></span></div></td>
+              </tr>
+              <tr>
+                <td class="gene">NUDT15</td>
+                <td>Thiopurine toxicity</td>
+                <td><span class="bar-label">8.0%</span><div class="bar"><span data-w="8"></span></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How It Works</span>
+          <h2>From raw genotype to a safe prescription in four steps.</h2>
+          <p>Designed for point-of-care workflows, so results arrive where prescribing decisions are made.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-num">01</div>
+            <h3>Upload Genomic Data</h3>
+            <p>Accept patient VCF files, JSON diagnostic lab outputs, or individual genotype calls.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">02</div>
+            <h3>Private, Client-Side Processing</h3>
+            <p>WebAssembly analysis runs in the browser, keeping sensitive genetic data on the device.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">03</div>
+            <h3>Risk Calibration</h3>
+            <p>A Bayesian engine with phenoconversion and polypharmacy DDGI screening scores each drug.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">04</div>
+            <h3>Precision Recommendation</h3>
+            <p>Sub-population-tailored dosing protocols and safer therapeutic alternatives, with an NNT calculator.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Platform features -->
+    <section class="section" id="platform" style="background: var(--fog);">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Platform Capabilities</span>
+          <h2>Built for clinicians, laboratories, and patients.</h2>
+          <p>A cloud-native platform with the interoperability and privacy controls healthcare systems require.</p>
+        </div>
+        <div class="features">
+          <div class="feature reveal">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3>Privacy by Design</h3>
+            <p>Client-side WebAssembly processing means raw genomic files need not leave the clinician's device.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+            </div>
+            <h3>ABHA-Linked Profiles</h3>
+            <p>Integrates with India's Ayushman Bharat Digital Mission to link lifetime pharmacogenomic profiles to a patient's ABHA ID.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 15l3-4 3 2 5-6"/></svg>
+            </div>
+            <h3>Polypharmacy Interaction Screening</h3>
+            <p>Drug-drug-gene interaction checks flag risks across multi-drug regimens common in elderly and chronic-care patients.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 6H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <h3>Pharmacoeconomic Insight</h3>
+            <p>An NNT calculator quantifies the clinical and economic value of each genotype-guided decision.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+            </div>
+            <h3>Cloud-Native Access</h3>
+            <p>Point-of-care web application that fits into existing clinical and diagnostic lab workflows without new hardware.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 002 3h10a2 2 0 002-3l-5-9V3"/><path d="M7.5 15h9"/></svg>
+            </div>
+            <h3>Specialty-Wide Coverage</h3>
+            <p>Dosing guidance across cardiology, oncology, neurology, psychiatry, and gastroenterology.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specialties -->
+    <section class="section specialties">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Clinical Coverage</span>
+          <h2>Precision dosing across five specialties.</h2>
+          <p>Each specialty is supported by genotype-driven recommendations and safer alternatives where risk is elevated.</p>
+        </div>
+        <div class="spec-grid">
+          <div class="spec reveal"><h3>Cardiology</h3><p>Antiplatelet response and anticoagulant dosing guidance.</p></div>
+          <div class="spec reveal"><h3>Oncology</h3><p>Toxicity risk screening for thiopurine and related agents.</p></div>
+          <div class="spec reveal"><h3>Neurology</h3><p>Genotype-informed selection and dosing of antiepileptic drugs.</p></div>
+          <div class="spec reveal"><h3>Psychiatry</h3><p>Metabolizer-aware antidepressant and antipsychotic prescribing.</p></div>
+          <div class="spec reveal"><h3>Gastroenterology</h3><p>Proton pump inhibitor response and drug-gene risk review.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market -->
+    <section class="section" id="market">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Market Opportunity</span>
+          <h2>A large, fast-growing market with an unmet clinical need.</h2>
+          <p>Figures are drawn from the market projections presented in our proposal.</p>
+        </div>
+        <div class="market-grid">
+          <div class="market reveal">
+            <div class="cap">Global Pharmacogenomics</div>
+            <div class="value">$9.62B → $21.87B</div>
+            <div class="meta">2024 to 2032, CAGR 10.80%</div>
+          </div>
+          <div class="market featured reveal">
+            <div class="cap">Indian Genomics</div>
+            <div class="value">$720M → $2.60B</div>
+            <div class="meta">2025 to 2032, CAGR 20.10%</div>
+          </div>
+          <div class="market reveal">
+            <div class="cap">Indian TDM &amp; Decision Support</div>
+            <div class="value">$25.65M → $36.52M</div>
+            <div class="meta">2024 to 2030, CAGR 6.13%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audience -->
+    <section class="section audience">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Who It Serves</span>
+          <h2>Built for the people making and paying for prescribing decisions.</h2>
+        </div>
+        <div class="aud-grid">
+          <div class="aud reveal">
+            <h3>Tertiary Care Prescribers</h3>
+            <p>Specialists who need safe dosing at the moment of prescribing.</p>
+            <ul>
+              <li>Cardiologists</li>
+              <li>Oncologists</li>
+              <li>Neurologists</li>
+              <li>Psychiatrists</li>
+              <li>Clinical pharmacologists</li>
+            </ul>
+          </div>
+          <div class="aud reveal">
+            <h3>Patients &amp; Families</h3>
+            <p>Chronic-condition and polypharmacy patients who benefit most from safer dosing.</p>
+            <ul>
+              <li>Patients with chronic conditions</li>
+              <li>Elderly and polypharmacy cohorts</li>
+              <li>Freemium patient portal access</li>
+            </ul>
+          </div>
+          <div class="aud reveal">
+            <h3>Hospitals &amp; Labs</h3>
+            <p>Institutions and diagnostic partners integrating genomic decision support.</p>
+            <ul>
+              <li>Hospital network subscriptions</li>
+              <li>Diagnostic laboratories (LIMS API)</li>
+              <li>Genomics companies</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <h2>Precision prescribing should not be a gamble.</h2>
+            <p>Bring population-calibrated pharmacogenomic guidance into your clinical workflow. Explore the platform or talk to our team about enterprise deployment.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="https://pharma-genie.lovable.app" target="_blank" rel="noopener">Launch the Platform &rarr;</a>
+            <a class="btn btn-ghost" href="mailto:contact@pharma-genie.com">Contact for Enterprise Access</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="#top" class="brand">
+            <img src="logo.png" alt="" />
+            PHARMA GENIE
+          </a>
+          <p>A clinical decision support platform for safer, precision prescribing in the Indian population.</p>
+        </div>
+        <div>
+          <h4>Platform</h4>
+          <a href="https://pharma-genie.lovable.app" target="_blank" rel="noopener">Launch App</a>
+          <a href="#how">How It Works</a>
+          <a href="#platform">Capabilities</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#market">Market</a>
+          <a href="#problem">The Problem</a>
+          <a href="mailto:contact@pharma-genie.com">Contact</a>
+        </div>
+        <div>
+          <h4>Data Sources</h4>
+          <p>GenomeIndia (10,074 genomes)</p>
+          <p>CSIR IndiGen (1,008 genomes)</p>
+          <p>Pharmacovigilance Programme of India</p>
+        </div>
+      </div>
+      <div class="disclaimer">
+        <span>&copy; <span id="year"></span> PHARMA GENIE. All rights reserved.</span>
+        <span>Decision support tool. Clinical decisions remain the responsibility of the treating physician.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach((el) => io.observe(el));
+
+    // Animate frequency bars when visible
+    const bars = document.querySelectorAll(".bar span[data-w]");
+    const barIo = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.width = e.target.dataset.w + "%";
+          barIo.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    bars.forEach((b) => barIo.observe(b));
+  </script>
+</body>
+</html>
