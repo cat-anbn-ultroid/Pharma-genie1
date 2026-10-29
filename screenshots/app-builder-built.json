@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Pharma Genie — Pharmacogenomic dosing",
+      "hasCanvas": false,
+      "bodyTextLen": 4186,
+      "bodyTextHash": "6a5846a07b31c7f56677e70f418d2188e78b6243d2faf0dc357daa855ffd6504",
+      "bodyTextPrefix": "Skip to content Pharma Genie Method Translation Genes Open the e",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Pharma Genie — Pharmacogenomic dosing",
+      "hasCanvas": false,
+      "bodyTextLen": 4161,
+      "bodyTextHash": "b61daa1c02fb67f4a9fa3e9c7952c4028eec171937db14e42e2fbfc5260d2d92",
+      "bodyTextPrefix": "Skip to content Pharma Genie Open the engine PHARMACOGENOMIC DOS",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
